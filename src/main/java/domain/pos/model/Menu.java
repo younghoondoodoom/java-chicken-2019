@@ -1,4 +1,6 @@
-package domain;
+package domain.pos.model;
+
+import domain.pos.type.Category;
 
 public class Menu {
     private final int number;
@@ -11,6 +13,22 @@ public class Menu {
         this.name = name;
         this.category = category;
         this.price = price;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     @Override

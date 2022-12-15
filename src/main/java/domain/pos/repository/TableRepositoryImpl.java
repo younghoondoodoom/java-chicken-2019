@@ -1,10 +1,13 @@
-package domain;
+package domain.pos.repository;
 
+import domain.pos.model.Table;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-public class TableRepository {
+public class TableRepositoryImpl implements TableRepository {
+
     private static final List<Table> tables = new ArrayList<>();
 
     static {
@@ -18,5 +21,9 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public Optional<Table> findByNumber(int number) {
+        return tables.stream().filter(table -> table.getNumber() == number).findFirst();
     }
 }

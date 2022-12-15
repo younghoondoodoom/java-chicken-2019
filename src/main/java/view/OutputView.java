@@ -1,7 +1,8 @@
 package view;
 
-import domain.Menu;
-import domain.Table;
+import domain.pos.dto.OrderHistoryResponse;
+import domain.pos.model.Menu;
+import domain.pos.model.Table;
 
 import java.util.List;
 
@@ -22,6 +23,30 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+    }
+
+    public static void printMain() {
+        System.out.println("## 메인화면");
+        System.out.println("1 - 주문등록");
+        System.out.println("2 - 결제하기");
+        System.out.println("3 - 프로그램 종료");
+    }
+
+    public static void printExit() {
+        System.out.println("포스가 종료 되었습니다.");
+    }
+
+    public static void printOrderHistory(List<OrderHistoryResponse> orderHistoryResponses) {
+        System.out.println("메뉴 수량 금액");
+        for (OrderHistoryResponse orderHistoryResponse : orderHistoryResponses) {
+            System.out.println(orderHistoryResponse.toString());
+        }
+    }
+
+    public static void printFinalPrice(int finalPrice) {
+        System.out.println("## 최종 결제할 금액");
+        System.out.println(finalPrice + "원");
+        System.out.println();
     }
 
     private static void printLine(final String line, final int count) {

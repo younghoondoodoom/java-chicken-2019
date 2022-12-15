@@ -1,10 +1,14 @@
-package domain;
+package domain.pos.repository;
 
+import domain.pos.model.Menu;
+import domain.pos.type.Category;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-public class MenuRepository {
+public class MenuRepositoryImpl implements MenuRepository {
+
     private static final List<Menu> menus = new ArrayList<>();
 
     static {
@@ -21,4 +25,9 @@ public class MenuRepository {
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
     }
+
+    public Optional<Menu> findByNumber(int number) {
+        return menus.stream().filter(menu -> menu.getNumber() == number).findFirst();
+    }
+
 }
